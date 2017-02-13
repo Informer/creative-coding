@@ -1,0 +1,251 @@
+
+<style>
+
+/** Add button **/
+
+button.add-reminder {
+
+}
+
+button.add-reminder:hover {
+
+}
+
+/** Sidebar classes **/
+
+.sidebar.hide {
+
+}
+
+.sidebar.show {
+
+}
+
+/** Sidebar hover hint **/
+.sidebar.hide:hover {
+
+}
+
+/** Sidebar hamburger  **/
+
+.sidebar .sidebar-toggle span {
+
+}
+
+.sidebar.show .sidebar-toggle span.first {
+
+}
+
+.sidebar.show .sidebar-toggle span.second {
+
+}
+
+.sidebar.show .sidebar-toggle span.third {
+
+}
+
+
+/** Article animations **/
+
+article {
+
+}
+
+article.show {
+
+}
+
+article.hide {
+
+}
+
+/** Animations **/
+
+@keyframes my-animation {
+
+}
+
+/** Base styles **/
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+}
+
+button {
+  cursor: pointer;
+}
+
+section.main {
+  max-width: 500px;
+  margin: 3rem auto;
+}
+
+section.main h1 {
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+article.reminder-item {
+  padding: 2rem;
+  border: 1px solid #000;
+  background: #fff;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+article.reminder-item .delete-reminder {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+article.reminder-item .title {
+  font-weight: bold;
+}
+
+article.reminder-item .title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+article.reminder-item p {
+  color: #666;
+}
+
+
+button.add-reminder {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  margin: auto;
+  display: block;
+  border: none;
+  border: 1px solid #000;
+  background: #fff;
+  margin-bottom: 2rem
+}
+
+.sidebar {
+  width: 300px;
+  background: #fff;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  text-align: center;
+  border-right: 1px solid #000
+}
+
+.sidebar .sidebar-toggle {
+  position: absolute;
+  right: -50px;
+  top: 2rem;
+  background: #000;
+  border: none;
+  color: #fff;
+  border-radius: 0;
+  padding: 1rem;
+  text-transform: uppercase;
+  width: 50px;
+  height: 50px;
+}
+
+.sidebar-toggle span {
+  height: 2px;
+  background: #fff;
+  display: block;
+  margin-bottom: 5px
+}
+
+</style>
+
+
+<aside class="sidebar hide">
+  <button class="sidebar-toggle">
+    <span class="first"></span>
+    <span class="second"></span>
+    <span class="third"></span>
+  </button>
+</aside>
+
+<section class="main">
+  <h1>Reminders</h1>
+  <div class="reminder-list">
+    <button class="add-reminder">+</button>
+    <article class="reminder-item item-1">
+       <div class='title'>Water plants</div>
+       <p class='hide'>Don't forget to do this task</p>
+       <button class='delete-reminder'>x</button>
+     </article>
+     <article class="reminder-item item-2">
+        <div class='title'>Study keyframes</div>
+        <p class='hide'>Don't forget to do this task</p>
+        <button class='delete-reminder'>x</button>
+      </article>
+      <article class="reminder-item item-3">
+         <div class='title'>Pick up Bart</div>
+         <p class='hide'>Don't forget to do this task</p>
+         <button class='delete-reminder'>x</button>
+       </article>
+       <article class="reminder-item item-4">
+          <div class='title'>Go to OFFSET</div>
+          <p class='hide'>Don't forget to do this task</p>
+          <button class='delete-reminder'>x</button>
+      </article>
+      <article class="reminder-item item-5">
+         <div class='title'>Visit CSS Tricks</div>
+         <p class='hide'>Don't forget to do this task</p>
+         <button class='delete-reminder'>x</button>
+     </article>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$( document ).ready(function() {
+  // Toggle sidebar show / hide
+  $(".sidebar-toggle").click(function() {
+    if ($(".sidebar").hasClass('show')) {
+        $(".sidebar").removeClass('show').addClass('hide');
+     } else {
+        $(".sidebar").removeClass('hide').addClass('show');
+    }
+  });
+
+  var count = 1;
+  $(".add-reminder").click(function() {
+    // This, addclass show, remove after animationend
+    if (count <= 5) {
+      var thisItem = '.item-' + count;
+      if ($(thisItem).hasClass('show')) {
+          $(thisItem).removeClass('show').addClass('hide');
+       } else {
+          $(thisItem).removeClass('hide').addClass('show');
+      }
+      count++;
+    }
+
+  });
+
+  $(".delete-reminder").click(function() {
+    $(this).parent().removeClass('show').addClass('hide');
+    $(this).parent().one('webkitAnimationEnd oanimationend msAnimationEnd animationend ontransitionend',
+    function(e) {
+        $(this).remove();
+    });
+  });
+
+
+});
+</script>
