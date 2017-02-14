@@ -1,7 +1,7 @@
 
 <style>
 
-/** Add button **/
+/** 1. Add button **/
 
 button.add-reminder {
 
@@ -11,7 +11,7 @@ button.add-reminder:hover {
 
 }
 
-/** Sidebar classes **/
+/** 2. Sidebar classes **/
 
 .sidebar.hide {
 
@@ -21,12 +21,12 @@ button.add-reminder:hover {
 
 }
 
-/** Sidebar hover hint **/
+/** 3.1 Sidebar hover hint **/
 .sidebar.hide:hover {
 
 }
 
-/** Sidebar hamburger  **/
+/** 3.2 Sidebar hamburger  **/
 
 .sidebar .sidebar-toggle span {
 
@@ -45,7 +45,7 @@ button.add-reminder:hover {
 }
 
 
-/** Article animations **/
+/** 5. Article animations **/
 
 article {
 
@@ -65,6 +65,7 @@ article.hide {
 
 }
 
+
 /** Base styles **/
 
 body {
@@ -74,7 +75,7 @@ body {
     background: #fff;
 }
 
-button {
+button:hover {
   cursor: pointer;
 }
 
@@ -167,6 +168,31 @@ button.add-reminder {
   margin-bottom: 5px
 }
 
+/** Sidebar question **/
+
+.sidebar .login {
+  padding: 3rem 2rem;
+  line-height: 1.4em;
+}
+
+.sidebar input, .sidebar button.answer {
+  padding: .75rem 1rem;
+  border: 1px solid #000;
+  margin-top: 1rem;
+  background: #fff;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.sidebar input {
+  margin-top: 2rem
+}
+
+.sidebar button.answer:hover {
+  background: #000;
+  color: #fff;
+}
+
 </style>
 
 
@@ -176,6 +202,11 @@ button.add-reminder {
     <span class="second"></span>
     <span class="third"></span>
   </button>
+  <div class="login">
+    <label>Enter your email</label>
+    <input type="email" name="email" />
+    <button class="answer">Log in</button>
+  </div>
 </aside>
 
 <section class="main">
@@ -246,6 +277,18 @@ $( document ).ready(function() {
     });
   });
 
+  function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+  }
+
+  $(".answer").click(function() {
+    if (isEmail($(".login input")[0].value)) {
+      $(".login").removeClass('invalid').addClass('valid');
+    } else {
+      $(".login").removeClass('valid').addClass('invalid');
+    }
+  });
 
 });
 </script>
