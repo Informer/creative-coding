@@ -4,105 +4,121 @@
 /** 1. Add button **/
 
 button.add-reminder:hover {
-
+  transform: scale(1.1);
 }
 
 button.add-reminder {
-
+  transition: transform 1s;
+  animation: button-animation 1s;
 }
 
-@keyframes bounce-in {
+@keyframes button-animation {
   from {
-
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(1.2);
   }
   to {
-
+    transform: scale(1);
   }
 }
-
 
 /** 2. Sidebar classes **/
 
 .sidebar {
-
+  transition: transform 1s;
 }
 
 .sidebar.hide {
-
+  transform: translateX(-300px);
 }
 
 .sidebar.show {
-
+  transform: translateX(0px);
 }
 
 /** 3.1 Sidebar hover hint **/
 .sidebar.hide:hover {
-
+  transform: translateX(-290px);
 }
 
 /** 3.2 Sidebar hamburger  **/
 
 .sidebar .sidebar-toggle span {
-
+  transition: transform 1s, opacity 1s;
 }
 
 .sidebar.show .sidebar-toggle span.first {
-
+  transform: translateY(7px) rotate(45deg);
 }
 
 .sidebar.show .sidebar-toggle span.second {
-
+  opacity: 0;
 }
 
 .sidebar.show .sidebar-toggle span.third {
-
+  transform: translateY(-7px) rotate(-45deg);
 }
-
 
 /** 4.1 Validate login  **/
 
 .login.invalid {
-
+  animation: login-animation .5s;
 }
 
 @keyframes login-animation {
   0% {
-
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  40% {
+    transform: translateX(-10px);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(-10px);
   }
   100% {
-
+    transform: translateX(0);
   }
 }
-
 
 /** 4.2 Validate with colour  **/
 
 .login.invalid input {
-
+  border-color: red;
+  transition: border-color 1s;
 }
 
 
 /** 5. Article animations **/
 
 .reminder-item {
-
-
+  transition: transform 1s, opacity 1s;
+  transform: scale(0);
 }
 
 .reminder-item.show {
-
+  transform: scale(1);
 }
 
 .reminder-item.hide {
-
+  animation: reminder-animation 1s;
 }
 
 @-webkit-keyframes reminder-animation {
   from {
-
+    transform: translateY(0);
+    opacity: 1;
   }
   to {
-
+    transform: translateX(-300px);
+    opacity: 0;
   }
 }
 
