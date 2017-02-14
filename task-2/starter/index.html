@@ -44,25 +44,54 @@ button.add-reminder:hover {
 
 }
 
+/** 4.1 Validate login  **/
+
+.login.invalid {
+
+}
+
+/** 4.2 Validate with colour  **/
+
+.login.invalid input {
+
+}
+
 
 /** 5. Article animations **/
 
-article {
+.reminder-item {
 
 }
 
-article.show {
+.reminder-item.show {
 
 }
 
-article.hide {
+.reminder-item.hide {
 
 }
 
 /** Animations **/
 
 @keyframes my-animation {
+  0% {
 
+  }
+  20% {
+
+  }
+  40% {
+
+  }
+  60% {
+
+  }
+  80% {
+
+  }
+  100% {
+
+  }
 }
 
 
@@ -271,10 +300,10 @@ $( document ).ready(function() {
 
   $(".delete-reminder").click(function() {
     $(this).parent().removeClass('show').addClass('hide');
-    $(this).parent().one('webkitAnimationEnd oanimationend msAnimationEnd animationend ontransitionend',
-    function(e) {
+    $(this).parent().bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd webkitAnimationEnd oanimationend msAnimationEnd animationend", function(){
         $(this).remove();
     });
+
   });
 
   function isEmail(email) {
@@ -288,6 +317,11 @@ $( document ).ready(function() {
     } else {
       $(".login").removeClass('valid').addClass('invalid');
     }
+    $(".login").on('change', function() {
+        $(".login").removeClass('valid')
+        $(".login").removeClass('invalid')
+    });
+
   });
 
 });
